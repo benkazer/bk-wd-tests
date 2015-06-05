@@ -9,6 +9,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
+      storeParse();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -76,3 +77,12 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+
+function storeParse(){
+    console.log("parse fxn called");
+    
+}
+
+
+
+
