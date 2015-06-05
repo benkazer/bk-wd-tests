@@ -1,4 +1,7 @@
 # bk-wd-tests
 fb login tests
 
-We want to make a little app that uses parse to store info from facebook
+TO DO
+- Initialize parse with facebook user ID#'s
+- prompt for likes, search likes and matches
+- would be sick 
