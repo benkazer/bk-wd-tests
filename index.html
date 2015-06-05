@@ -15,7 +15,6 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">    
     <link href = "css/styles.css" rel = "stylesheet">
-
     <title>BKWD Test</title>
     </head>
         
@@ -23,5 +22,83 @@
 </head>
 
 <body>
-        <h1> Our First Test Page </h1>
-</body>
+
+                    <!--FACEBOOK INITIALIZATION-->
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '955781044444165',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+                    <!--END FB INIT-->
+
+<div class="container">
+ 
+    <div class="row"> 
+        <div class="offset-by-one six columns">
+            <h1><img src="images/alikeio_logo.png" width="218" height="60" id="logo"></h1>
+        </div>
+
+        <div id="nav" class="five columns">
+
+        </div>
+    </div>
+        
+           
+        <div class="row">
+            
+            <div class="offset-by-four one-third column">
+
+
+            <div id="signupForm" style="display:none">
+                <form>
+                    <h4>Sign up</h4>
+
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" placeholder="" required="yes" class="u-full-width">
+
+
+                    <label for="signup-email">Email</label>
+                    <input type="text" id="signup-email" placeholder="" required="yes" class="u-full-width">
+
+
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="" required="yes" class="u-full-width">
+
+                    <input type="button" onclick="signUpUser()" value="Sign Up" class="u-full-width button-primary" class="button-primary">
+                    <div id="signupMessage"></div>
+
+                </form>
+            </div>
+
+            <div id="goToSignin" style="display:none">
+                Already registered? <a href="#" onclick="showSignin();">Sign in here</a>.
+            </div>
+            
+            
+
+        </div>
+        </div> 
+        
+ 
+        <!--
+        <div class="row" id="allRights">
+            <div class="offset-by-four one-third">
+                <div class="push"></div>
+                <div id="allRights">Copyright © 2015 &nbsp;&nbsp; | &nbsp;&nbsp; All Rights Reserved</div>
+            </div>
+        </div>
+        -->
+        
+    </div></body>
