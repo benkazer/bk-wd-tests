@@ -8,12 +8,13 @@
 
     <!--mobile friendly: -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- jQuery library -->
+    <script src = "fb.js"></script>
+
     <link href = "css/styles.css" rel = "stylesheet">
     <title>BKWD Test</title>
         
@@ -49,55 +50,17 @@
             <h1><img src="images/alikeio_logo.png" width="218" height="60" id="logo"></h1>
         </div>
 
-        <div id="nav" class="five columns">
-
-        </div>
     </div>
         
-           
-        <div class="row">
-            
-            <div class="offset-by-four one-third column">
+    <div>
 
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 
-            <div id="signupForm" style="display:none">
-                <form>
-                    <h4>Sign up</h4>
+        <div id="status"></div>
 
-                    <label for="signup-username">Username</label>
-                    <input type="text" id="signup-username" placeholder="" required="yes" class="u-full-width">
-
-
-                    <label for="signup-email">Email</label>
-                    <input type="text" id="signup-email" placeholder="" required="yes" class="u-full-width">
-
-
-                    <label for="signup-password">Password</label>
-                    <input type="password" id="signup-password" placeholder="" required="yes" class="u-full-width">
-
-                    <input type="button" onclick="signUpUser()" value="Sign Up" class="u-full-width button-primary" class="button-primary">
-                    <div id="signupMessage"></div>
-
-                </form>
-            </div>
-
-            <div id="goToSignin" style="display:none">
-                Already registered? <a href="#" onclick="showSignin();">Sign in here</a>.
-            </div>
-            
-            
-
-        </div>
-        </div> 
+    </div>       
         
- 
-        <!--
-        <div class="row" id="allRights">
-            <div class="offset-by-four one-third">
-                <div class="push"></div>
-                <div id="allRights">Copyright © 2015 &nbsp;&nbsp; | &nbsp;&nbsp; All Rights Reserved</div>
-            </div>
-        </div>
-        -->
+</div> 
+
         
     </div></body>
