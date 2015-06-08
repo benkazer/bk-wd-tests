@@ -119,17 +119,6 @@ function storeParse(username, email, likes){
     var TestObject = Parse.Object.extend("TestObject");
     var testObject = new TestObject();
 
-    var testUser = new Parse.User();
-    testUser.set("username", username);
-
-    user.signup(null, {
-      success: function(user) {
-        console.log("You're a User!");
-      },
-      error: function(user, error) {
-        console.log("something fucked up");
-      }
-    });
 
     testObject.set("username", username);
     testObject.set("email", email);
