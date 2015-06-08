@@ -25,13 +25,12 @@
 
 <body onload='loadcontent()'>
 <body>
-<div id="fb-root"></div> 
 
                     <!--FACEBOOK/PARSE INITIALIZATION-->
     <script>
   Parse.initialize("2B1LrySeACHqPEBFWYUnJFjZh76IcWSV6B8apCR3", "D51O9nn4LjfGGq0QTMM775Np3VadMkhSpZxcgNzx");
 
-  /*/initialize parse with facebook utils 
+  //initialize parse with facebook utils 
   window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
       appId      : '955781044444165',
@@ -61,55 +60,8 @@
      js = d.createElement(s); js.id = id;
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));*/
-    
-  
-      // Initialize the Facebook SDK with Parse as described at 
-      // https://parse.com/docs/js_guide#fbusers
-      window.fbAsyncInit = function() {
-        // init the FB JS SDK
-        Parse.FacebookUtils.init({
-          appId      : '955781044444165', // Facebook App ID
-          status     : true, // check login status
-          cookie     : true, // enable cookies to allow Parse to access the session
-          xfbml      : true,  // parse XFBML
-          version    : 'v2.3'
-        });
-        Parse.FacebookUtils.logIn(null, {
-          success: function(user) {
-            // If it's a new user, get their name from FB
-            if (!user.existed()) {
-              // We make a graph request
-              FB.api('/me', function(response) {
-                if (!response.error) {
-                  // We save the data on the Parse user
-                  user.set("displayName", response.name);
-                  user.save(null, {
-                    success: function(user) {
-                      // did it work?
-                      console.log("hey you're a user");
-                    },
-                    error: function(user, error) {
-                      console.log("Oops, something went wrong saving your name.");
-                    }
-                  });
-                } else {
-                  console.log("Oops something went wrong with facebook.");
-                }
-              });
-            // If it's an existing user that was logged in, we say it worked
-            } else {
-              console.log("youre already a user");
-            }
-          },
-      });
-      (function(d, debug){
-         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement('script'); js.id = id; js.async = true;
-         js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
-         ref.parentNode.insertBefore(js, ref);
-       }(document, /*debug*/ false));
+   }(document, 'script', 'facebook-jssdk'));
+      
 </script>
                     <!--END FB INIT-->
 
