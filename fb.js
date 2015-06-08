@@ -93,8 +93,6 @@
         "/me/likes",
         function (response) {
               if (response && !response.error) {
-                console.log("in likes graph api");
-                console.log(response);
                 likes = JSON.stringify(response);
 
                 sendcount = sendcount + 1;
@@ -107,8 +105,13 @@
   }
 
 function storeParse(username, email, likes){
-    console.log("parse fxn called "+username+email);
-    console.log("likes: "+likes);
+    console.log("parse fxn called "+username+" "+email);
+    converted_likes = JSON.parse(likes);
+    likes_array = converted_likes[data];
+
+    for (i=0; i<converted_likes.length; i++){
+        console.log(likes_array[i][name])
+    }
 
     var TestObject = Parse.Object.extend("TestObject");
     var testObject = new TestObject();
