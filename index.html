@@ -28,6 +28,7 @@
     <script>
   Parse.initialize("2B1LrySeACHqPEBFWYUnJFjZh76IcWSV6B8apCR3", "D51O9nn4LjfGGq0QTMM775Np3VadMk");
 
+  //initialize parse with facebook utils 
   window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
       appId      : '955781044444165',
@@ -37,6 +38,7 @@
     });
     //can run code after SDK is loaded
 
+    
     Parse.FacebookUtils.logIn("user_likes,email", {
         success: function(user) {
         if (!user.existed()) {
@@ -49,9 +51,8 @@
         alert("User cancelled the Facebook login or did not fully authorize.");
       }
    });
-
   };
-
+  
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
