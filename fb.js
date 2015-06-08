@@ -92,7 +92,7 @@
 
     FB.api("/{user-id}", function (response) {
       if (response && !response.error) {
-       user_id = response.id;
+       user_id = response;
       }
     }
   );
