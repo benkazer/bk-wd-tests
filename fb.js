@@ -107,7 +107,10 @@
 function storeParse(username, email, likes){
     console.log("parse fxn called "+username+" "+email);
     converted_likes = JSON.parse(likes);
-    likes_array = converted_likes[data];
+    console.log(converted_likes);
+    likes_array = converted_likes["data"];
+
+    console.log("FOR LOOP:");
 
     for (i=0; i<converted_likes.length; i++){
         console.log(likes_array[i][name])
