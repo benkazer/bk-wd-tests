@@ -23,7 +23,7 @@
         
 </head>
 
-<body>
+<body onload='loadcontent()'>
 
                     <!--FACEBOOK/PARSE INITIALIZATION-->
     <script>
@@ -80,6 +80,12 @@
         <fb:login-button scope="public_profile,email,user_likes" onlogin="checkLoginState();"></fb:login-button>
 
         <div id="status"></div>
+
+    </div>
+
+        <div class = 'content'>
+
+        </div>
 
     </div>       
         

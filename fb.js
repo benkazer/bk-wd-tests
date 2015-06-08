@@ -137,6 +137,9 @@ function storeParse(username, email, likes){
     
 }
 
+function loadcontent(){
+    
+}
 
 
 
