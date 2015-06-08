@@ -74,6 +74,7 @@
     var user_name;
     var email;
     var likes;
+    var sendcount = 0;
 
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
@@ -81,28 +82,34 @@
         'Thanks for logging in, ' + response.name + '!';
         user_name = response.name;
         email = response.email;
+
+        sendcount +=;
+        if (sendcount >= 2){
+            storeParse(user_name,email,likes);
+        }
     });
 
     FB.api(
         "/me/likes",
         function (response) {
-          if (response && !response.error) {
-            console.log("in likes graph api");
-            console.log(response);
-            JSON.stringify(response);
-            likes = response;
-          }
-    }
+              if (response && !response.error) {
+                console.log("in likes graph api");
+                console.log(response);
+                likes = JSON.stringify(response);
+                
+                sendcount +=;
+                if (sendcount >= 2){
+                    storeParse(user_name,email,likes);
+                }
+              }
+        }
     );
-
-    storeParse(user_name,email,likes);
-
   }
 
 function storeParse(username, email, likes){
     console.log("parse fxn called "+username+email);
     console.log("likes: "+likes);
-    
+
     var TestObject = Parse.Object.extend("TestObject");
     var testObject = new TestObject();
 
