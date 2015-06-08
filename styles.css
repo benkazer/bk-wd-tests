@@ -1,11 +1,11 @@
 #box{
-	border: 4px;
+	border-width: 4px;
 	border-color: #2980B9;
 	border-radius: 8px;
 	text-align: center;
 }
 #expand{
-	border: 4px;
-	border-color: red;
+	border-width: 4px;
+	border-color: #2980B9;
 	border-radius: 8px;
 }
