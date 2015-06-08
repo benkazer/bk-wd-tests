@@ -97,7 +97,7 @@
   }
 
 function storeParse(user_name, email){
-    console.log("parse fxn called "+username+email);
+    console.log("parse fxn called "+user_name+email);
     //console.log(likes);
     var TestObject = Parse.Object.extend("TestObject");
     var testObject = new TestObject();
