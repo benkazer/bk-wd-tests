@@ -140,6 +140,7 @@ function storeParse(username, email, likes){
 function loadcontent(){
 
     var query = new Parse.Query("TestObject");
+    console.log("alpha success");
     query.find({
 
         success: function(results) {
@@ -147,7 +148,7 @@ function loadcontent(){
 
             for(var i =0; i < results.length; i++){
                 console.log(results[i]);
-                $('.content').append("<h1>"+results[i].username+"</h1>");
+                $('.content').append("<h1>"+results[i]["_serverData"]["username"]+"</h1>");
             }
         },
 
