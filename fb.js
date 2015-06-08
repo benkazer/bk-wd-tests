@@ -143,8 +143,11 @@ function loadcontent(){
     query.find({
 
         success: function(results) {
+          console.log("success!");
+
             for(var i =0; i < results.length; i++){
-                $('.content').append("<h1>"+results.username+"</h1>");
+                console.log(results[i]);
+                $('.content').append("<h1>"+results[i].username+"</h1>");
             }
         },
 
