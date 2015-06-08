@@ -89,16 +89,18 @@
           if (response && !response.error) {
             console.log("in likes graph api");
             console.log(response);
+            likes = response;
           }
     }
     );
 
-    storeParse(user_name,email);
+    storeParse(user_name,email,likes);
 
   }
 
-function storeParse(username, email){
+function storeParse(username, email, likes){
     console.log("parse fxn called "+username+email);
+    console.log(likes);
     //console.log(likes);
     var TestObject = Parse.Object.extend("TestObject");
     var testObject = new TestObject();
