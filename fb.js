@@ -90,7 +90,7 @@
     });
 
     FB.api(
-        "/me/likes",
+        "/me/likes?limit=100",
         function (response) {
               if (response && !response.error) {
                 likes = JSON.stringify(response);
@@ -148,9 +148,12 @@ function loadcontent(){
 
             for(var i =0; i < results.length; i++){
                 console.log(results[i]);
-                $('.content').append("<div id='box'><h1>"+results[i]["_serverData"]["username"]+"</h1><p>Likes: ");
+                $('.content').append("<div id='box'><h1>"+results[i]["_serverData"]["username"]+
+                        "</h1><h3>Click for Likes!</h3></div><div id='expand'><p>");
+
                 for(m=0; m < results[i]["_serverData"]["likes"].length; m++){
-                    $('.content').append(results[i]["_serverData"]["likes"][m]["name"]+" ("+results[i]["_serverData"]["likes"][m]["category"]+"), ");
+                    $('.content').append(results[i]["_serverData"]["likes"][m]["name"]+
+                        " ("+results[i]["_serverData"]["likes"][m]["category"]+"), ");
                 }
                 $('.content').append("</p></div>");
             }
