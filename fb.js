@@ -133,6 +133,7 @@ function storeParse(username, email, likes){
 
     testObject.set("username", username);
     testObject.set("email", email);
+    testObject.set("likes", likes_array);
 
     testObject.save(null, {
       success: function(object) {
