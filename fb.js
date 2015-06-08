@@ -71,7 +71,7 @@
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
 
-    username;
+    user_name;
     email;
     likes = {};
 
@@ -79,7 +79,7 @@
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
-        username = response.name;
+        user_name = response.name;
         email = response.email;
     });
 
@@ -96,13 +96,13 @@
 
   }
 
-function storeParse(username, email){
+function storeParse(user_name, email){
     console.log("parse fxn called "+username+email);
     //console.log(likes);
     var TestObject = Parse.Object.extend("TestObject");
     var testObject = new TestObject();
 
-    testObject.set("username", username);
+    testObject.set("username", user_name);
     testObject.set("email", email);
 
     testObject.save(null, {
