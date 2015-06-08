@@ -73,7 +73,7 @@
 
     var user_name;
     var email;
-    var likes = {};
+    var likes;
 
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
@@ -89,6 +89,7 @@
           if (response && !response.error) {
             console.log("in likes graph api");
             console.log(response);
+            JSON.stringify(response);
             likes = response;
           }
     }
@@ -100,8 +101,8 @@
 
 function storeParse(username, email, likes){
     console.log("parse fxn called "+username+email);
-    console.log(likes);
-    //console.log(likes);
+    console.log("likes: "+likes);
+    
     var TestObject = Parse.Object.extend("TestObject");
     var testObject = new TestObject();
 
