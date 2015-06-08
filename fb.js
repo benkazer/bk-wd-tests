@@ -112,7 +112,7 @@ function storeParse(username, email, likes){
 
     console.log("FOR LOOP:");
 
-    for (i=0; i<converted_likes.length; i++){
+    for (i=0; i<likes_array.length; i++){
         console.log(likes_array[i][name])
     }
 
