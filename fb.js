@@ -83,7 +83,7 @@
         user_name = response.name;
         email = response.email;
 
-        sendcount +=;
+        sendcount = sendcount + 1;
         if (sendcount >= 2){
             storeParse(user_name,email,likes);
         }
@@ -96,8 +96,8 @@
                 console.log("in likes graph api");
                 console.log(response);
                 likes = JSON.stringify(response);
-                
-                sendcount +=;
+
+                sendcount = sendcount + 1;
                 if (sendcount >= 2){
                     storeParse(user_name,email,likes);
                 }
