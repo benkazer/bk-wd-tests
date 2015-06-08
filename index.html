@@ -77,7 +77,7 @@
         });
         Parse.FacebookUtils.logIn(null, {
           success: function(user) {
-            // If it's a new user, let's fetch their name from FB
+            // If it's a new user, get their name from FB
             if (!user.existed()) {
               // We make a graph request
               FB.api('/me', function(response) {
@@ -86,7 +86,7 @@
                   user.set("displayName", response.name);
                   user.save(null, {
                     success: function(user) {
-                      // And finally save the new score
+                      // did it work?
                       console.log("hey you're a user");
                     },
                     error: function(user, error) {
@@ -97,7 +97,7 @@
                   console.log("Oops something went wrong with facebook.");
                 }
               });
-            // If it's an existing user that was logged in, we save the score
+            // If it's an existing user that was logged in, we say it worked
             } else {
               console.log("youre already a user");
             }
