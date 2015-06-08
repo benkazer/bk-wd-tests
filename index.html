@@ -39,7 +39,7 @@
     //can run code after SDK is loaded
 
     
-    Parse.FacebookUtils.logIn("email", {
+    Parse.FacebookUtils.logIn( {
         success: function(user) {
         if (!user.existed()) {
           alert("User signed up and logged in through Facebook!");
