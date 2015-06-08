@@ -27,7 +27,7 @@
 
                     <!--FACEBOOK/PARSE INITIALIZATION-->
     <script>
-  Parse.initialize("2B1LrySeACHqPEBFWYUnJFjZh76IcWSV6B8apCR3", "D51O9nn4LjfGGq0QTMM775Np3VadMk");
+  Parse.initialize("2B1LrySeACHqPEBFWYUnJFjZh76IcWSV6B8apCR3", "D51O9nn4LjfGGq0QTMM775Np3VadMkhSpZxcgNzx");
 
   //initialize parse with facebook utils 
   window.fbAsyncInit = function() {
@@ -38,8 +38,6 @@
       version    : 'v2.3'
     });
     //can run code after SDK is loaded
-
-    
     Parse.FacebookUtils.logIn( {
         success: function(user) {
         if (!user.existed()) {
