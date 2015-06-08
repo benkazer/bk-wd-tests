@@ -8,7 +8,7 @@
 
     <!--mobile friendly: -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 
     <script type="text/javascript" src="//www.parsecdn.com/js/parse-1.4.2.min.js"></script>
     <script type="text/javascript" src="fb.js" ></script>
@@ -23,13 +23,18 @@
         
 </head>
 
+<<<<<<< Updated upstream
 <body onload='loadcontent()'>
+=======
+<body>
+<div id="fb-root"></div> 
+>>>>>>> Stashed changes
 
                     <!--FACEBOOK/PARSE INITIALIZATION-->
     <script>
   Parse.initialize("2B1LrySeACHqPEBFWYUnJFjZh76IcWSV6B8apCR3", "D51O9nn4LjfGGq0QTMM775Np3VadMkhSpZxcgNzx");
 
-  //initialize parse with facebook utils 
+  /*/initialize parse with facebook utils 
   window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
       appId      : '955781044444165',
@@ -59,10 +64,28 @@
      js = d.createElement(s); js.id = id;
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
+   }(document, 'script', 'facebook-jssdk'));*/
+    
   
-  
+      // Initialize the Facebook SDK with Parse as described at 
+      // https://parse.com/docs/js_guide#fbusers
+      window.fbAsyncInit = function() {
+        // init the FB JS SDK
+        Parse.FacebookUtils.init({
+          appId      : '955781044444165', // Facebook App ID
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow Parse to access the session
+          xfbml      : true  // parse XFBML
+          version    : 'v2.3'
+        });
+      };
+      (function(d, debug){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+         ref.parentNode.insertBefore(js, ref);
+       }(document, /*debug*/ false));
 </script>
                     <!--END FB INIT-->
 
