@@ -9,7 +9,6 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-      storeParse();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -73,13 +72,30 @@
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
+      storeParse(response.name,response.email);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
   }
 
-function storeParse(){
-    console.log("parse fxn called");
+function storeParse(username, email){
+    console.log("parse fxn called "+username+email);
+    var TestObject = Parse.Object.extend("TestObject");
+    var testObject = new TestObject();
+
+    testObject.set("username", username);
+    testObject.set("email", email);
+
+    testObject.save(null, {
+      success: function(object) {
+        $(".success").show();
+        console.log("YOU WIN THE GAME");
+      },
+      error: function(model, error) {
+        $(".error").show();
+        console.log("save error");
+      }
+    });
     
 }
 
