@@ -42,17 +42,7 @@
     Parse.FacebookUtils.logIn( {
         success: function(user) {
         if (!user.existed()) {
-          FB.api('/me', function(response) {
-            if (!response.error) {
-              user.set("displayName", response.name);
-              user.save(null, {
-                success: function(user) {
-                  console.log("I'M a USER!!");
-                }
-              });
-            }
-          });
-          /*alert("User signed up and logged in through Facebook!");*/
+          alert("User signed up and logged in through Facebook!");
         } else {
           alert("User logged in through Facebook!");
         }
