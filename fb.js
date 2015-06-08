@@ -72,15 +72,15 @@
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
-      storeParse(response.name,response.email, response.user_likes);
+      storeParse(response.name,response.email);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
   }
 
-function storeParse(username, email, likes){
+function storeParse(username, email){
     console.log("parse fxn called "+username+email);
-    console.log(likes);
+    //console.log(likes);
     var TestObject = Parse.Object.extend("TestObject");
     var testObject = new TestObject();
 
