@@ -138,7 +138,21 @@ function storeParse(username, email, likes){
 }
 
 function loadcontent(){
-    
+    var storedObjects[];
+
+    var query = new Parse.Query("TestObject");
+    query.find({
+
+        success: function(results) {
+            for(var i =0; i < results.length; i++)
+            $('.content').append("<h1>"+results.[username]+"</h1>");
+        },
+
+        error: function(error{
+          alert("Error: "+error.code+" "+error.message);
+        })
+
+    });
 }
 
 
