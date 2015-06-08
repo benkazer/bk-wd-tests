@@ -71,9 +71,9 @@
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
 
-    user_name;
-    email;
-    likes = {};
+    var user_name;
+    var email;
+    var likes = {};
 
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
