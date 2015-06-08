@@ -32,10 +32,11 @@
     Parse.FacebookUtils.init({
       appId      : '955781044444165',
       xfbml      : true,
+      status     : false,
       version    : 'v2.3'
     });
     //can run code after SDK is loaded
-    
+
     Parse.FacebookUtils.logIn("user_likes,email", {
         success: function(user) {
         if (!user.existed()) {
@@ -75,7 +76,7 @@
         
     <div>
 
-        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+        <fb:login-button scope="public_profile,email,user_likes" onlogin="checkLoginState();"></fb:login-button>
 
         <div id="status"></div>
 
