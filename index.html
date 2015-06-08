@@ -33,8 +33,9 @@
   window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
       appId      : '955781044444165',
-      status     : false, //changed from false
-      cookie     : true, //added
+      status     : false, 
+      channelURL : 'benkazer.github.io/bk-wd-tests/index.html';
+      cookie     : true, //allow parse to access session
       xfbml      : true,
       version    : 'v2.3'
     });
