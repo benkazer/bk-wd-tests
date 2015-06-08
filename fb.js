@@ -93,6 +93,7 @@
     FB.api("/{user-id}", function (response) {
       if (response && !response.error) {
        user_id = response;
+       console.log("this is your user ID: " + user_id);
       }
     }
   );
