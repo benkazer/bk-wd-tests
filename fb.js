@@ -148,7 +148,11 @@ function loadcontent(){
 
             for(var i =0; i < results.length; i++){
                 console.log(results[i]);
-                $('.content').append("<h1>"+results[i]["_serverData"]["username"]+"</h1>");
+                $('.content').append("<div id='box'><h1>"+results[i]["_serverData"]["username"]+"</h1><p>Likes: ");
+                for(m=0; m < results[i]["_serverData"]["likes"].length; m++){
+                    $('.content').append(results[i]["_serverData"]["likes"][m]["name"]+" ("+results[i]["_serverData"]["likes"][m]["category"]+"), ");
+                }
+                $('.content').append("</p></div>");
             }
         },
 
