@@ -138,7 +138,6 @@ function storeParse(username, email, likes){
 }
 
 function loadcontent(){
-    var storedObjects[];
 
     var query = new Parse.Query("TestObject");
     query.find({
