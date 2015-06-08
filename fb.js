@@ -72,6 +72,7 @@
     console.log('Welcome!  Fetching your information.... ');
 
     var user_name;
+    var user_id;
     var email;
     var likes;
     var sendcount = 0;
@@ -89,6 +90,13 @@
         }
     });
 
+    FB.api("/{user-id}", function (response) {
+      if (response && !response.error) {
+       user_id = response;
+      }
+    }
+  );
+
     FB.api(
         "/me/likes?limit=100",
         function (response) {
@@ -97,14 +105,25 @@
 
                 sendcount = sendcount + 1;
                 if (sendcount >= 2){
-                    storeParse(user_name,email,likes);
+                    storeParse(user_name, user_id, email,likes);
                 }
               }
         }
     );
   }
 
-function storeParse(username, email, likes){
+  
+
+  /*FB.api(
+    "/me/friends",
+    function (response) {
+      if (response && !response.error) {
+        
+      }
+    }
+);*/
+
+function storeParse(username, user_id, email, likes){
     console.log("parse fxn called "+username+" "+email);
     converted_likes = JSON.parse(likes);
     console.log(converted_likes);
@@ -121,6 +140,7 @@ function storeParse(username, email, likes){
 
 
     testObject.set("username", username);
+    testObject.set("user_id", user_id);
     testObject.set("email", email);
     testObject.set("likes", likes_array);
 
