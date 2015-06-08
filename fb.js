@@ -87,22 +87,23 @@
         "/me/likes",
         function (response) {
           if (response && !response.error) {
+            console.log("in likes graph api");
             console.log(response);
           }
     }
     );
 
-    storeParse(response.name,response.email);
+    storeParse(user_name,email);
 
   }
 
-function storeParse(user_name, email){
-    console.log("parse fxn called "+user_name+email);
+function storeParse(username, email){
+    console.log("parse fxn called "+username+email);
     //console.log(likes);
     var TestObject = Parse.Object.extend("TestObject");
     var testObject = new TestObject();
 
-    testObject.set("username", user_name);
+    testObject.set("username", username);
     testObject.set("email", email);
 
     testObject.save(null, {
