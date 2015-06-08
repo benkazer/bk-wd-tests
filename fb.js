@@ -144,7 +144,7 @@ function loadcontent(){
 
         success: function(results) {
             for(var i =0; i < results.length; i++){
-                $('.content').append("<h1>"+results["username"]+"</h1>");
+                $('.content').append("<h1>"+results.username+"</h1>");
             }
         },
 
