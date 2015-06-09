@@ -96,10 +96,8 @@ FB.api(
     "/{ID}/friends/{10204403892927065}",
     function (response) {
       if (response && !response.error) {
-        if (response.name === "Will Dolan") {
           console.log("Will and Ben are friends");
         }
-      }
     }
 );
 
