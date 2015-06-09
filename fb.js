@@ -93,10 +93,10 @@
 
     /* make the API call */
 FB.api(
-    "/{10204403892927065}/friends/{1516095381}",
+    "/{ID}/friends/{10204403892927065}",
     function (response) {
       if (response && !response.error) {
-        if (response.name === "Ben Kazer") {
+        if (response.name === "Will Dolan") {
           console.log("Will and Ben are friends");
         }
       }
