@@ -159,7 +159,7 @@ function loadcontent(){
 
                 var contentString;
                 contentString = "<div id='box'><h1>"+results[i]["_serverData"]["username"]+
-                        "</h1><h3>Click for Likes!</h3></div><div id='expand'><p>"
+                        "</h1></div><div id='expand'><p>"
 
                 for(m=0; m < results[i]["_serverData"]["likes"].length; m++){
                     contentString += (results[i]["_serverData"]["likes"][m]["name"]+
