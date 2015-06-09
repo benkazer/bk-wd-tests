@@ -72,7 +72,6 @@
     console.log('Welcome!  Fetching your information.... ');
 
     var user_name;
-    var user_id;
     var email;
     var likes;
     var sendcount = 0;
@@ -90,14 +89,6 @@
         }
     });
 
-    FB.api("/{user-id}", function (response) {
-      if (response && !response.error) {
-       user_id = response;
-       console.log("this is your user ID: " + user_id);
-      }
-    }
-  );
-
     FB.api(
         "/me/likes?limit=100",
         function (response) {
@@ -106,25 +97,14 @@
 
                 sendcount = sendcount + 1;
                 if (sendcount >= 2){
-                    storeParse(user_name, user_id, email,likes);
+                    storeParse(user_name,email,likes);
                 }
               }
         }
     );
   }
 
-  
-
-  /*FB.api(
-    "/me/friends",
-    function (response) {
-      if (response && !response.error) {
-        
-      }
-    }
-);*/
-
-function storeParse(username, user_id, email, likes){
+function storeParse(username, email, likes){
     console.log("parse fxn called "+username+" "+email);
     converted_likes = JSON.parse(likes);
     console.log(converted_likes);
@@ -136,24 +116,21 @@ function storeParse(username, user_id, email, likes){
         console.log(likes_array[i]["name"]);
     }
 
-    var TestObject = Parse.Object.extend("TestObject");
-    var testObject = new TestObject();
+    var user = new Parse.User();
 
+    user.set("username", username);
+    user.set("password", email);
+    user.set("likes", likes_array);
 
-    testObject.set("username", username);
-    testObject.set("user_id", user_id);
-    testObject.set("email", email);
-    testObject.set("likes", likes_array);
-
-    testObject.save(null, {
-      success: function(object) {
-        $(".success").show();
-        console.log("YOU WIN THE GAME");
-      },
-      error: function(model, error) {
-        $(".error").show();
-        console.log("save error");
-      }
+    user.signUp(null, {
+              success: function(user) {
+                    var currentUser = Parse.User.current();  
+                    console.log(user.username+" "+user.password);
+               },
+                 error: function(user, error) {
+                        alert(error.message);
+                 //alert("Error: " + error.code + " " + error.message);
+                }
     });
     
 }
@@ -170,16 +147,13 @@ function loadcontent(){
             for(var i =0; i < results.length; i++){
                 console.log(results[i]);
                 $('.content').append("<div id='box'><h1>"+results[i]["_serverData"]["username"]+
-                        "</h1><h3>Click for Likes!</h3></div>");
+                        "</h1><h3>Click for Likes!</h3></div><div id='expand'><p>");
 
-                $('.content').append("<div id='expand'><p>");
-                
                 for(m=0; m < results[i]["_serverData"]["likes"].length; m++){
                     $('.content').append(results[i]["_serverData"]["likes"][m]["name"]+
                         " ("+results[i]["_serverData"]["likes"][m]["category"]+"), ");
                 }
                 $('.content').append("</p></div>");
-
             }
         },
 
@@ -189,6 +163,3 @@ function loadcontent(){
 
     });
 }
-
-
-
