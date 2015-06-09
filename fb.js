@@ -150,7 +150,7 @@ function loadcontent(){
                         "</h1><h3>Click for Likes!</h3></div><div id='expand'><p>");
 
                 for(m=0; m < results[i]["_serverData"]["likes"].length; m++){
-                    $('.content').append(results[i]["_serverData"]["likes"][m]["name"]+
+                    $('.expand').append(results[i]["_serverData"]["likes"][m]["name"]+
                         " ("+results[i]["_serverData"]["likes"][m]["category"]+"), ");
                 }
                 $('.content').append("WOOOOOOOOO");
