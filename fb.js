@@ -165,10 +165,15 @@ function loadcontent(){
         }
 
     });
-    //handler for click on box
-    $('#box').click(
-      function(){
-          $('#expand').slideToggle('slow');
+
+  $(document).ready(function() {
+  var par = $('div#expand');
+  $(par).hide();
+  
+  $('#div#box h3').click(function(e) {
+      $("div#expand").slideToggle('slow');
+      e.preventDefault();
       });
+    });
 
 }
