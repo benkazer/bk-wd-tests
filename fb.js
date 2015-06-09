@@ -189,8 +189,11 @@ function loadcontent(){
 
     });
     for(var x=0; x < userIDs.length; x++){
+      console.log("in for loop for userids");
       var stringHolder = '"/{'+userIDs[x]+'}"'
         FB.api(
+               console.log("in fb api");
+
                 stringHolder,
                 {
                     "fields": "context.fields(mutual_likes)"
