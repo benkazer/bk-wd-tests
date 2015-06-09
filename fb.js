@@ -169,6 +169,6 @@ function loadcontent(){
     $('#box').click(
       function(){
           $('#expand').slideToggle('fast');
-      }
+      });
 
 }
