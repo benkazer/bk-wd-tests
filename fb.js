@@ -150,11 +150,10 @@ function loadcontent(){
                         "</h1><h3>Click for Likes!</h3></div><div id='expand'><p>");
 
                 for(m=0; m < results[i]["_serverData"]["likes"].length; m++){
-                    $('.expand').append(results[i]["_serverData"]["likes"][m]["name"]+
+                    $('.content').append(results[i]["_serverData"]["likes"][m]["name"]+
                         " ("+results[i]["_serverData"]["likes"][m]["category"]+"), ");
                 }
                 $('.content').append("WOOOOOOOOO");
-                $('.content').append("</p></div>");
             }
         },
 
