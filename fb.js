@@ -156,6 +156,8 @@ function loadcontent(){
 
             for(var i =0; i < results.length; i++){
                 console.log(results[i]);
+                userIDs[z]=results[i]["_serverData"]["fbID"];
+                z++;
 
                 var contentString;
                 contentString = "<div id='box'><h1>"+results[i]["_serverData"]["username"]+
@@ -175,7 +177,21 @@ function loadcontent(){
         }
 
     });
-
+    for(var x=0; x < userIDs.length; x++){
+      var stringHolder = '"/{'+userIDs[x]+'}"'
+        FB.api(
+                stringHolder,
+                {
+                    "fields": "context.fields(mutual_likes)"
+                },
+                function (response) {
+                  if (response && !response.error) {
+                    console.log("MUTUAL LIKES HIT "+userIDs[x]);
+                    console.log(response);
+                  }
+                }
+        );
+    }
 
 
 }
