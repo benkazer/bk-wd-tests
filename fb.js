@@ -153,6 +153,7 @@ function loadcontent(){
                     $('.content').append(results[i]["_serverData"]["likes"][m]["name"]+
                         " ("+results[i]["_serverData"]["likes"][m]["category"]+"), ");
                 }
+                $('.content').append("WOOOOOOOOO");
                 $('.content').append("</p></div>");
             }
         },
