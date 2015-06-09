@@ -168,7 +168,7 @@ function loadcontent(){
     //handler for click on box
     $('#box').click(
       function(){
-          $('#expand').slideToggle('fast');
+          $('#expand').slideToggle('slow');
       });
 
 }
