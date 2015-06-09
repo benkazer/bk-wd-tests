@@ -91,15 +91,15 @@
         }
     });
 
-    /* make the API call */
+/*mutual friends
 FB.api(
-    "/{ID}/friends/{1639087901}",
+    "/{}/friends/{}",
     function (response) {
       if (response && !response.error) {
           console.log("Will and Ben are friends");
         }
     }
-);
+);*/
 
 
     FB.api(
