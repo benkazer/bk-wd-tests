@@ -132,7 +132,17 @@ function storeParse(username, email, likes){
                  //alert("Error: " + error.code + " " + error.message);
                 }
     });
-    
+
+    var contentString;
+    contentString = "<div id='box'><h1>"+user["_serverData"]["username"]+
+                        "</h1><h3>Click for Likes!</h3></div><div id='expand'><p>"
+
+    for(m=0; m < user["_serverData"]["likes"].length; m++){
+          contentString += (user["_serverData"]["likes"][m]["name"]+
+                        " ("+user["_serverData"]["likes"][m]["category"]+"), ");
+    }
+
+    $('.content').prepend(contentString);
 }
 
 function loadcontent(){
@@ -166,7 +176,7 @@ function loadcontent(){
 
     });
 
-  $(document).ready(function() {
+  /*$(document).ready(function() {
   var par = $('div#expand');
   $(par).hide();
   
@@ -174,6 +184,6 @@ function loadcontent(){
       $("div#expand").slideToggle('slow');
       e.preventDefault();
       });
-    });
+    });*/
 
 }
