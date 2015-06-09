@@ -95,6 +95,7 @@
 FB.api(
     "/{ID}/friends/{10204403892927065}",
     function (response) {
+      console.log("friends at least catching");
       if (response && !response.error) {
           console.log("Will and Ben are friends");
         }
