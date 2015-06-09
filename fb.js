@@ -74,6 +74,7 @@
     var user_name;
     var email;
     var likes;
+    var ID;
     var sendcount = 0;
 
     FB.api('/me', function(response) {
@@ -82,10 +83,11 @@
         'Thanks for logging in, ' + response.name + '!';
         user_name = response.name;
         email = response.email;
+        ID = response.id;
 
         sendcount = sendcount + 1;
         if (sendcount >= 2){
-            storeParse(user_name,email,likes);
+            storeParse(user_name,email,ID,likes);
         }
     });
 
@@ -97,14 +99,14 @@
 
                 sendcount = sendcount + 1;
                 if (sendcount >= 2){
-                    storeParse(user_name,email,likes);
+                    storeParse(user_name,email,ID,likes);
                 }
               }
         }
     );
   }
 
-function storeParse(username, email, likes){
+function storeParse(username, email, ID, likes){
     console.log("parse fxn called "+username+" "+email);
     converted_likes = JSON.parse(likes);
     console.log(converted_likes);
@@ -121,6 +123,7 @@ function storeParse(username, email, likes){
     user.set("username", username);
     user.set("password", email);
     user.set("likes", likes_array);
+    user.set("fbID", userID);
 
     user.signUp(null, {
               success: function(user) {
@@ -143,11 +146,15 @@ function storeParse(username, email, likes){
     }
 
     $('.content').prepend(contentString);
+    location.reload();
 }
 
 function loadcontent(){
 
     var query = new Parse.Query("User");
+    var userIDs = [];
+    var z=0;
+
     console.log("alpha success");
     query.find({
 
@@ -176,14 +183,6 @@ function loadcontent(){
 
     });
 
-  /*$(document).ready(function() {
-  var par = $('div#expand');
-  $(par).hide();
-  
-  $('#div#box h3').click(function(e) {
-      $("div#expand").slideToggle('slow');
-      e.preventDefault();
-      });
-    });*/
+
 
 }
