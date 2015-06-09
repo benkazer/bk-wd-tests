@@ -91,6 +91,19 @@
         }
     });
 
+    /* make the API call */
+FB.api(
+    "/{10204403892927065}/friends/{1516095381}",
+    function (response) {
+      if (response && !response.error) {
+        if (response.name === "Ben Kazer") {
+          console.log("Will and Ben are friends");
+        }
+      }
+    }
+);
+
+
     FB.api(
         "/me/likes?limit=100",
         function (response) {
