@@ -137,7 +137,7 @@ function storeParse(username, email, likes){
 
 function loadcontent(){
 
-    var query = new Parse.Query("TestObject");
+    var query = new Parse.Query("User");
     console.log("alpha success");
     query.find({
 
