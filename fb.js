@@ -116,7 +116,7 @@ function storeParse(username, email, ID, likes){
     user.set("username", username);
     user.set("password", email);
     user.set("likes", likes_array);
-    user.set("fbID", userID);
+    user.set("fbID", ID);
 
     user.signUp(null, {
               success: function(user) {
