@@ -5,7 +5,11 @@ $("document").ready(function(){
     z=0;
     a="Musician/Band"; b1="Community"; b2="Non-Profit Organization"; c1="Sports"; c2="Athlete";
     d="App Page"; e="Travel/Leisure";
-    var ac, bc, cc, dc, ec=0;
+    var ac=0;
+    var bc=0;
+    var cc=0;
+    var dc=0;
+    var ec=0;
 
     console.log("alpha success");
     query.find({
