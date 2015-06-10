@@ -160,6 +160,7 @@ $("document").ready(function(){
                   $('.matches').append('<h3> likes in common</h3>');
                   for(var i =0;i<response.context.mutual_likes.summary.total_count;i++){
                       $('.matches').append(response.context.mutual_likes.data[i]);
+                      console.log(response.context.mutual_likes.data[i]);
                   }
 
                 }
