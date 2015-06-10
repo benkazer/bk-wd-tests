@@ -153,7 +153,7 @@ $("document").ready(function(){
             function (response) {
                 console.log("in fb api");
                 if (response && !response.error) {
-                  console.log("MUTUAL LIKES HIT "+userIDs[x]);
+                  console.log("MUTUAL LIKES HIT ");
                   console.log(response);
                 }
                 else{
