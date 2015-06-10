@@ -5,11 +5,6 @@ $("document").ready(function(){
     z=0;
     a="Musician/Band"; b1="Community"; b2="Non-Profit Organization"; c1="Sports"; c2="Athlete";
     d="App Page"; e="Travel/Leisure";
-    var ac=0;
-    var bc=0;
-    var cc=0;
-    var dc=0;
-    var ec=0;
 
     console.log("alpha success");
     query.find({
@@ -26,9 +21,14 @@ $("document").ready(function(){
                 z++;
 
                 var contentString;
-                contentString = "<div id='box'><h1>"+results[i]["_serverData"]["username"]+
-                        "</h1></div><div id='expand'><p>"
-
+                contentString = ("<div id='box'><h1>"+results[i]["_serverData"]["username"]+
+                        "</h1></div><div id='expand'><p>");
+                
+                var ac=0;
+                var bc=0;
+                var cc=0;
+                var dc=0;
+                var ec=0;
                 for(m=0; m < results[i]["_serverData"]["likes"].length; m++){
 
                     z= results[i]["_serverData"]["likes"][m]["category"];
