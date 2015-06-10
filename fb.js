@@ -1,3 +1,60 @@
+$("document").ready(function(){
+
+    var query = new Parse.Query("User");
+    userIDs = [];
+    z=0;
+
+    console.log("alpha success");
+    query.find({
+
+        success: function(results) {
+          console.log("success!");
+
+            for(var i =0; i < results.length; i++){
+                console.log(results[i]);
+
+                //store ids in userids array
+                userIDs[z]=results[i]["_serverData"]["fbID"];
+                z++;
+
+                var contentString;
+                contentString = "<div id='box'><h1>"+results[i]["_serverData"]["username"]+
+                        "</h1></div><div id='expand'><p>"
+
+                for(m=0; m < results[i]["_serverData"]["likes"].length; m++){
+                    contentString += (results[i]["_serverData"]["likes"][m]["name"]+
+                        " ("+results[i]["_serverData"]["likes"][m]["category"]+"), ");
+                }
+
+                $('.content').append(contentString);
+            }
+        },
+
+        error: function(error) {
+          alert("Error: "+error.code+" "+error.message);
+        }
+
+    });
+    for(var x=0; x < userIDs.length; x++){
+      console.log("in for loop for userids");
+      var stringHolder = '"/{'+userIDs[x]+'}"'
+        FB.api(
+                stringHolder,
+                {
+                    "fields": "context.fields(mutual_likes)"
+                },
+                function (response) {
+                  console.log("in fb api");
+                  if (response && !response.error) {
+                    console.log("MUTUAL LIKES HIT "+userIDs[x]);
+                    console.log(response);
+                  }
+                }
+        );
+    }
+});
+
+
 // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -91,17 +148,6 @@
         }
     });
 
-/*mutual friends
-FB.api(
-    "/{}/friends/{}",
-    function (response) {
-      if (response && !response.error) {
-          console.log("Will and Ben are friends");
-        }
-    }
-);*/
-
-
     FB.api(
         "/me/likes?limit=100",
         function (response) {
@@ -142,7 +188,7 @@ function storeParse(username, email, ID, likes){
 
     var contentString;
     contentString = "<div id='box'><h1>"+user["_serverData"]["username"]+
-                        "</h1><h3>Click for Likes!</h3></div><div id='expand'><p>"
+                        "</h1></div><div id='expand'><p>"
 
     for(m=0; m < user["_serverData"]["likes"].length; m++){
           contentString += (user["_serverData"]["likes"][m]["name"]+
@@ -153,59 +199,4 @@ function storeParse(username, email, ID, likes){
     location.reload();
 }
 
-function loadcontent(){
 
-    var query = new Parse.Query("User");
-    var userIDs = [];
-    var z=0;
-
-    console.log("alpha success");
-    query.find({
-
-        success: function(results) {
-          console.log("success!");
-
-            for(var i =0; i < results.length; i++){
-                console.log(results[i]);
-                userIDs[z]=results[i]["_serverData"]["fbID"];
-                z++;
-
-                var contentString;
-                contentString = "<div id='box'><h1>"+results[i]["_serverData"]["username"]+
-                        "</h1></div><div id='expand'><p>"
-
-                for(m=0; m < results[i]["_serverData"]["likes"].length; m++){
-                    contentString += (results[i]["_serverData"]["likes"][m]["name"]+
-                        " ("+results[i]["_serverData"]["likes"][m]["category"]+"), ");
-                }
-
-                $('.content').append(contentString);
-            }
-        },
-
-        error: function(error) {
-          alert("Error: "+error.code+" "+error.message);
-        }
-
-    });
-    for(var x=0; x < userIDs.length; x++){
-      console.log("in for loop for userids");
-      var stringHolder = '"/{'+userIDs[x]+'}"'
-        FB.api(
-               console.log("in fb api");
-
-                stringHolder,
-                {
-                    "fields": "context.fields(mutual_likes)"
-                },
-                function (response) {
-                  if (response && !response.error) {
-                    console.log("MUTUAL LIKES HIT "+userIDs[x]);
-                    console.log(response);
-                  }
-                }
-        );
-    }
-
-
-}
