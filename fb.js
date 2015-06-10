@@ -155,6 +155,10 @@ $("document").ready(function(){
                 if (response && !response.error) {
                   console.log("MUTUAL LIKES HIT ");
                   console.log(response);
+                  $('.matches').append('<h3>You and Ben Kazer have </h3>');
+                  $('.matches').append(response.context.mutual_likes.summary.total_count);
+                  $('.matches').append('<h3> likes in common</h3>');
+
                 }
                 else{
                   console.log("you messed up the api call");
