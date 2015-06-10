@@ -146,7 +146,7 @@ $("document").ready(function(){
         }
     );
     FB.api(
-            "/1516095381",
+            "/1230724022",
             {
                 "fields": "context.fields(mutual_likes)"
             },
@@ -155,11 +155,11 @@ $("document").ready(function(){
                 if (response && !response.error) {
                   console.log("MUTUAL LIKES HIT ");
                   console.log(response);
-                  $('.matches').append('<h3>You and Ben Kazer have </h3>');
+                  $('.matches').append('<h3>You and Jennie Wilson have </h3>');
                   $('.matches').append(response.context.mutual_likes.summary.total_count);
-                  $('.matches').append('<h3> likes in common</h3>');
+                  $('.matches').append('<h3> mutual likes!</h3>');
                   for(var i =0;i<response.context.mutual_likes.summary.total_count;i++){
-                      $('.matches').append(response.context.mutual_likes.data[i]);
+                      $('.matches').append('<h3>'+response.context.mutual_likes.data[i]+'</h3>');
                       console.log(response.context.mutual_likes.data[i]);
                   }
 
