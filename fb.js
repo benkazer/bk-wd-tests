@@ -3,6 +3,9 @@ $("document").ready(function(){
     var query = new Parse.Query("User");
     userIDs = [];
     z=0;
+    a="Musician/Band"; b1="Community"; b2="Non-Profit Organization"; c1="Sports"; c2="Athlete";
+    d="App Page"; e="Travel/Leisure";
+    ac, bc, cc, dc, ec=0;
 
     console.log("alpha success");
     query.find({
@@ -23,13 +26,28 @@ $("document").ready(function(){
                         "</h1></div><div id='expand'><p>"
 
                 for(m=0; m < results[i]["_serverData"]["likes"].length; m++){
-                    contentString += (results[i]["_serverData"]["likes"][m]["name"]+
-                        " ("+results[i]["_serverData"]["likes"][m]["category"]+"), ");
+
+                    z= results[i]["_serverData"]["likes"][m]["category"];
+                    contentString += (results[i]["_serverData"]["likes"][m]["name"]+" ("+z+"), ");
+
+                    if(z==a){  ac++;  }
+                    else if(z.search(b1) >=1 || z==b2) {  bc++; }
+                    else if(z.search(c1) >=1 || z==c2) {  cc++; }
+                    else if(z==d) {  dc++;  }
+                    else if(z==e) {  ec++;  }
+                    }
+
+                contentString+=("<h6>"+results[i]["_serverData"]["username"]+" has "+ac+" likes in Music,</h6>");
+                contentString+=("<h6>"+bc+" likes in Community/Non-Profits,</h6>");
+                contentString+=("<h6>"+cc+" likes in Sports,</h6>");
+                contentString+=("<h6>"+dc+" likes in App Pages,</h6>");
+                contentString+=("<h6>and "+ec+" likes in Travel/Leisure.</h6>");
+
                 }
 
                 $('.content').append(contentString);
-            }
-        },
+        }
+    },
 
         error: function(error) {
           alert("Error: "+error.code+" "+error.message);
@@ -156,12 +174,12 @@ $("document").ready(function(){
                   console.log("MUTUAL LIKES HIT ");
                   console.log(response);
                   $('.matches').append('<h3>You and Jennie Wilson have </h3>');
-                  $('.matches').append(response.context.mutual_likes.summary.total_count);
+                  $('.matches').append('<h3>'+response.context.mutual_likes.summary.total_count+'</h3>');
                   $('.matches').append('<h3> mutual likes!</h3>');
-                  for(var i =0;i<response.context.mutual_likes.summary.total_count;i++){
+                  /*for(var i =0;i<response.context.mutual_likes.summary.total_count;i++){
                       $('.matches').append('<h3>'+response.context.mutual_likes.data[i]+'</h3>');
                       console.log(response.context.mutual_likes.data[i]);
-                  }
+                  }>>>>>NOTE: I need to get approval from FB API to get array; it's always empty rn*/
 
                 }
                 else{
