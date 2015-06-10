@@ -15,6 +15,7 @@ $("document").ready(function(){
 
                 //store ids in userids array
                 userIDs[z]=results[i]["_serverData"]["fbID"];
+                console.log(userIDs[z]);
                 z++;
 
                 var contentString;
@@ -35,9 +36,10 @@ $("document").ready(function(){
         }
 
     });
-    for(var x=0; x < userIDs.length; x++){
+        console.log("success2");
+    /*for(var x=0; x < userIDs.length; x++){
       console.log("in for loop for userids");
-      var stringHolder = '"/{'+userIDs[x]+'}"'
+      var stringHolder = '"/{'+userIDs[x]+'}"'*/
         FB.api(
                 "/{1516095381}",
                 {
@@ -54,7 +56,7 @@ $("document").ready(function(){
                   }
                 }
         );
-    }
+    //}
 });
 
 
