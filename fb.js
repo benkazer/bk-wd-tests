@@ -36,27 +36,6 @@ $("document").ready(function(){
         }
 
     });
-        console.log("success2");
-    /*for(var x=0; x < userIDs.length; x++){
-      console.log("in for loop for userids");
-      var stringHolder = '"/{'+userIDs[x]+'}"'*/
-        FB.api(
-                "/{1516095381}",
-                {
-                    "fields": "context.fields(mutual_likes)"
-                },
-                function (response) {
-                  console.log("in fb api");
-                  if (response && !response.error) {
-                    console.log("MUTUAL LIKES HIT "+userIDs[x]);
-                    console.log(response);
-                  }
-                  else{
-                    console.log("you messed up the api call");
-                  }
-                }
-        );
-    //}
 });
 
 
@@ -165,6 +144,22 @@ $("document").ready(function(){
                 }
               }
         }
+    );
+    FB.api(
+            "/1516095381",
+            {
+                "fields": "context.fields(mutual_likes)"
+            },
+            function (response) {
+                console.log("in fb api");
+                if (response && !response.error) {
+                  console.log("MUTUAL LIKES HIT "+userIDs[x]);
+                  console.log(response);
+                }
+                else{
+                  console.log("you messed up the api call");
+                }
+            }
     );
   }
 
