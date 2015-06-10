@@ -35,15 +35,13 @@ $("document").ready(function(){
                     else if(z.search(c1) >=1 || z==c2) {  cc++; }
                     else if(z==d) {  dc++;  }
                     else if(z==e) {  ec++;  }
-                    }
+                }
 
                 contentString+=("<h6>"+results[i]["_serverData"]["username"]+" has "+ac+" likes in Music,</h6>");
                 contentString+=("<h6>"+bc+" likes in Community/Non-Profits,</h6>");
                 contentString+=("<h6>"+cc+" likes in Sports,</h6>");
                 contentString+=("<h6>"+dc+" likes in App Pages,</h6>");
                 contentString+=("<h6>and "+ec+" likes in Travel/Leisure.</h6>");
-
-                }
 
                 $('.content').append(contentString);
         }
