@@ -39,7 +39,7 @@ $("document").ready(function(){
       console.log("in for loop for userids");
       var stringHolder = '"/{'+userIDs[x]+'}"'
         FB.api(
-                stringHolder,
+                "/{1516095381}",
                 {
                     "fields": "context.fields(mutual_likes)"
                 },
@@ -48,6 +48,9 @@ $("document").ready(function(){
                   if (response && !response.error) {
                     console.log("MUTUAL LIKES HIT "+userIDs[x]);
                     console.log(response);
+                  }
+                  else{
+                    console.log("you messed up the api call");
                   }
                 }
         );
