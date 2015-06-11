@@ -23,7 +23,7 @@ $("document").ready(function(){
                 var contentString;
                 contentString = ("<div id='box'><h1>"+results[i]["_serverData"]["username"]+
                         "</h1></div><div id='expand'><p>");
-                
+
                 var ac=0;
                 var bc=0;
                 var cc=0;
@@ -203,7 +203,40 @@ function storeParse(username, email, ID, likes){
     user.set("likes", likes_array);
     user.set("fbID", ID);
 
-    user.signUp(null, {
+    if (!Parse.User.current()){
+        Parse.FacebookUtils.logIn(null, {
+          success: function(user) {
+            // If it's a new user, let's make a user object
+                if (!user.existed()) {
+                  user.signUp(null, {
+                      success: function(user) {
+                            var currentUser = Parse.User.current();  
+                            console.log(user.username+" "+user.password);
+                       },
+                       error: function(user, error) {
+                              alert(error.message);
+                       //alert("Error: " + error.code + " " + error.message);
+                      }
+                })
+                // If it's an existing user that was not logged in, we log them in
+                } else {
+                        Parse.User.logIn("myname", "mypass", {
+                              success: function(user) {
+                                console.log("successful parse login");
+                                var currentUser = Parse.User.current();
+                              },
+                              error: function(user, error) {
+                                    console.log("Oops, something went wrong.228");
+                              }
+                        });
+                  }
+          },
+          error: function(user, error) {
+            console.log("Oops, something went wrong.234");
+          }
+        });
+      }
+    /*user.signUp(null, {
               success: function(user) {
                     var currentUser = Parse.User.current();  
                     console.log(user.username+" "+user.password);
@@ -212,7 +245,7 @@ function storeParse(username, email, ID, likes){
                         alert(error.message);
                  //alert("Error: " + error.code + " " + error.message);
                 }
-    });
+    });*/
 
     var contentString;
     contentString = "<div id='box'><h1>"+user["_serverData"]["username"]+
